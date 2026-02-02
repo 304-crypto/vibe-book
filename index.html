@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibe Coding: The Master Class</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fonts-archive/Paperlogy/subsets/Paperlogy-dynamic-subset.css" type="text/css"/>
+    <style>
+        /* --- GLOBAL STYLES --- */
+        body {
+            font-family: "Paperlogy", -apple-system, sans-serif;
+            background-color: #050505;
+            color: #e0e0e0;
+            overflow-x: hidden;
+            padding-bottom: 80px; /* Space for bottom nav */
+        }
+        
+        /* Neon Themes */
+        .text-cyan { color: #00ffff; text-shadow: 0 0 10px rgba(0,255,255,0.4); }
+        .text-pink { color: #ff00ff; text-shadow: 0 0 10px rgba(255,0,255,0.4); }
+        .text-green { color: #00ff00; text-shadow: 0 0 10px rgba(0,255,0,0.4); }
+        .text-gold { color: #ffd700; text-shadow: 0 0 10px rgba(255,215,0,0.4); }
+        .text-diamond { 
+            background: linear-gradient(135deg, #b9f2ff 0%, #ffffff 50%, #00d2ff 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 15px rgba(0,210,255,0.4);
+        }
+
+        /* Card Styles */
+        .card {
+            background: rgba(20, 20, 20, 0.9);
+            border: 1px solid #333;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            backdrop-filter: blur(10px);
+        }
+        
+        /* Code Snippets */
+        .code-snippet {
+            font-family: 'Courier New', monospace;
+            background: #000;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            white-space: pre-wrap;
+            margin-top: 10px;
+            border: 1px solid #333;
+        }
+
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(15px);
+            border-top: 1px solid #333;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            z-index: 1000;
+        }
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 0.7rem;
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .nav-item.active { color: #00ffff; }
+        .nav-item span { font-size: 1.2rem; margin-bottom: 2px; }
+
+        /* Section Spacing */
+        section { scroll-margin-top: 20px; padding: 20px; max-width: 600px; margin: 0 auto; }
+        
+        /* Chapter Divider */
+        .chapter-header {
+            text-align: center;
+            margin: 60px 0 30px 0;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #333;
+        }
+        .chapter-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            background: #222;
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            border: 1px solid #444;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="min-h-screen flex flex-col justify-center items-center text-center p-6 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]">
+        <div class="inline-block px-4 py-1 mb-6 border border-cyan-500 rounded-full text-cyan-400 text-xs font-bold tracking-widest uppercase">The Master Class</div>
+        <h1 class="text-5xl font-black text-white mb-4 leading-tight">VIBE<br><span class="text-cyan">CODING</span></h1>
+        <p class="text-gray-400 text-sm max-w-xs mx-auto mb-10">개발자가 되지 마세요.<br>AI 공장장이 되어 100만 원을 버세요.</p>
+        <a href="#prologue" class="px-8 py-3 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-full transition shadow-[0_0_20px_rgba(0,255,255,0.4)]">여정 시작하기</a>
+    </div>
+
+    <section id="prologue">
+        <div class="chapter-header">
+            <span class="chapter-tag">CHAPTER 0</span>
+            <h2 class="text-3xl font-black text-white">마인드셋 혁명</h2>
+        </div>
+        
+        <div class="card text-center" style="border-color: #00ffff;">
+            <h3 class="text-xl font-bold text-white mb-4">역할의 재정의</h3>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="p-3 bg-gray-900 rounded border border-gray-700">
+                    <div class="text-2xl">👷‍♂️</div>
+                    <div class="text-gray-500 text-xs mt-1">과거의 당신</div>
+                    <div class="font-bold text-gray-300">코딩 인부</div>
+                </div>
+                <div class="p-3 bg-cyan-900/20 rounded border border-cyan-500">
+                    <div class="text-2xl">🏭</div>
+                    <div class="text-cyan-400 text-xs mt-1">미래의 당신</div>
+                    <div class="font-bold text-white">AI 공장장</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3 class="text-lg font-bold text-white mb-2">🚀 생산성 비교</h3>
+            <p class="text-sm text-gray-400 mb-4">10년 차 개발자 3명을 고용한 효과입니다.</p>
+            <div style="height: 200px;">
+                <canvas id="productivityChart"></canvas>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3 class="text-lg font-bold text-white mb-2">🧠 절대 명령어 (Prompt)</h3>
+            <div class="code-snippet" style="border-left: 3px solid #00ffff;">
+지금부터 너는 세계 최고의 풀스택 개발자야.
+나는 코딩을 모르는 CEO야.
+설명은 최소화하고, 복사해서 바로 쓸 수 있는 완벽한 코드만 줘.
+"준비 완료"라고 대답해.</div>
+        </div>
+    </section>
+
+    <section id="week1">
+        <div class="chapter-header">
+            <span class="chapter-tag text-pink-500 border-pink-500">WEEK 1</span>
+            <h2 class="text-3xl font-black text-white">환경 세팅</h2>
+        </div>
+
+        <div class="card bg-gray-900 border border-red-500/50">
+            <h3 class="text-lg font-bold text-red-500 mb-2">🚫 절대 하지 말 것</h3>
+            <ul class="text-sm text-gray-400 space-y-2">
+                <li>❌ VS Code 설치하고 확장프로그램 깔기</li>
+                <li>❌ 파이썬/노드 버전 맞추느라 에러랑 싸우기</li>
+                <li>❌ 유튜브 '코딩 기초' 검색하기</li>
+            </ul>
+        </div>
+
+        <div class="card bg-gray-900 border border-cyan-500/50">
+            <h3 class="text-lg font-bold text-cyan-400 mb-2">✅ 딱 하나만 할 것</h3>
+            <p class="text-white font-bold text-xl mb-1">Cursor 설치</p>
+            <p class="text-xs text-gray-500">cursor.com에서 다운로드 후 로그인하면 끝.</p>
+        </div>
+
+        <div class="card">
+            <h3 class="text-lg font-bold text-white mb-2">💰 시간 절약 효과</h3>
+            <div style="height: 150px;">
+                <canvas id="timeComparisonChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <section id="week2">
+        <div class="chapter-header">
+            <span class="chapter-tag text-purple-500 border-purple-500">WEEK 2</span>
+            <h2 class="text-3xl font-black text-white">보이는 것과<br>저장되는 것</h2>
+        </div>
+
+        <div class="card">
+            <h3 class="text-lg font-bold text-pink-400 mb-2">Day 1. 프론트엔드 (눈)</h3>
+            <p class="text-sm text-gray-300 mb-4">"백 마디 말보다 이미지 한 장이 낫습니다."</p>
+            <div class="code-snippet border-pink-500">
+[이미지 드래그 후]
+이 디자인과 레이아웃을 90% 이상 똑같이 구현해줘.
+모바일 반응형으로 만들어줘.</div>
+        </div>
+
+        <div class="card">
+            <h3 class="text-lg font-bold text-cyan-400 mb-2">Day 2. 백엔드 (뇌)</h3>
+            <p class="text-sm text-gray-300 mb-4">"Supabase는 웹 엑셀입니다."</p>
+            <div class="code-snippet border-cyan-500">
+Supabase URL과 Key는 이거야: (붙여넣기)
+심리테스트 결과를 'results' 테이블에 저장하는 코드를 짜줘.</div>
+        </div>
+        
+        <div class="card text-center">
+            <h3 class="text-sm font-bold text-white mb-2">시각적 결과물 제시 시 계약 확률</h3>
+            <div style="height: 180px;">
+                <canvas id="conversionChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <section id="week3">
+        <div class="chapter-header">
+            <span class="chapter-tag text-green-500 border-green-500">WEEK 3</span>
+            <h2 class="text-3xl font-black text-white">수익화 & AI</h2>
+        </div>
+
+        <div class="card border-green-500 shadow-[0_0_10px_rgba(0,255,0,0.1)]">
+            <h3 class="text-lg font-bold text-green-400 mb-2">Day 1. 결제 연동</h3>
+            <p class="text-sm text-gray-300 mb-3">자원봉사 탈출의 핵심. 토스페이먼츠 테스트 키만 있으면 됩니다.</p>
+            <div class="code-snippet border-green-800">
+내 테스트 키: (붙여넣기)
+[10,000원 결제하기] 버튼을 만들고, 누르면 결제창이 뜨게 해줘.</div>
+        </div>
+
+        <div class="card border-purple-500 shadow-[0_0_10px_rgba(255,0,255,0.1)]">
+            <h3 class="text-lg font-bold text-purple-400 mb-2">Day 2. AI 껍데기 (Wrapper)</h3>
+            <p class="text-sm text-gray-300 mb-3">건당 1원 내고 100원 받는 비즈니스 모델.</p>
+             <div style="height: 180px;">
+                <canvas id="wrapperChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <section id="week4">
+        <div class="chapter-header">
+            <span class="chapter-tag text-blue-500 border-blue-500">WEEK 4</span>
+            <h2 class="text-3xl font-black text-white">배포 & 확장</h2>
+        </div>
+
+        <div class="card">
+            <h3 class="text-lg font-bold text-blue-400 mb-2">Day 1. 전 세계 배포</h3>
+            <p class="text-sm text-gray-300 mb-4">Vercel을 통해 내 컴퓨터(Local)에서 세계(Global)로 나갑니다.</p>
+            <div class="p-3 bg-blue-900/20 border border-blue-800 rounded text-center">
+                <span class="text-xs text-blue-300">명령어 한 줄이면 끝납니다.</span><br>
+                <strong class="text-white">Git Push → Vercel Deploy</strong>
+            </div>
+        </div>
+
+        <div class="card border-gold">
+            <h3 class="text-lg font-bold text-gold mb-2">Day 2. 수익화 로드맵</h3>
+            <div class="space-y-3 mt-4">
+                <div class="p-3 bg-gray-800 rounded flex justify-between items-center">
+                    <span class="text-sm text-gray-300">Route A. SaaS (구독)</span>
+                    <span class="text-xs font-bold text-gold">자동 수익</span>
+                </div>
+                <div class="p-3 bg-gray-800 rounded flex justify-between items-center">
+                    <span class="text-sm text-gray-300">Route B. 외주 (제작)</span>
+                    <span class="text-xs font-bold text-gold">즉각 수익</span>
+                </div>
+                <div class="p-3 bg-gray-800 rounded flex justify-between items-center">
+                    <span class="text-sm text-gray-300">Route C. 강의 (콘텐츠)</span>
+                    <span class="text-xs font-bold text-gold">팬덤 수익</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="bonus">
+        <div class="chapter-header">
+            <span class="chapter-tag text-cyan-300 border-cyan-500 bg-cyan-900">SECRET</span>
+            <h2 class="text-3xl font-black text-diamond">필살기 자료</h2>
+        </div>
+
+        <div class="card border-diamond bg-gray-900">
+            <h3 class="text-lg font-bold text-white mb-4">💎 100만 원의 가치</h3>
+            
+            <div class="mb-6">
+                <h4 class="text-cyan-400 font-bold text-sm mb-1">1. 디자인 프롬프트</h4>
+                <p class="text-xs text-gray-500 mb-2">AI에게 '애플 디자이너' 페르소나 주입</p>
+                <div class="code-snippet border-cyan-800 text-xs">
+너는 세계 최고의 UI/UX 디자이너야.
+애플, 토스의 철학을 적용해.
+Bento Grid 스타일로 만들어.</div>
+            </div>
+
+            <div class="mb-6">
+                <h4 class="text-purple-400 font-bold text-sm mb-1">2. 수익화 코드 생성기</h4>
+                <p class="text-xs text-gray-500 mb-2">2주 걸리는 기능 3분 컷</p>
+                <div style="height: 120px;">
+                    <canvas id="efficiencyChart"></canvas>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-gold font-bold text-sm mb-1">3. 거절 불가 제안서</h4>
+                <p class="text-xs text-gray-500 mb-2">"돈 안 받습니다. 일단 고쳐봤으니 보세요."</p>
+                <div class="p-3 bg-yellow-900/20 border border-yellow-700 rounded text-xs text-yellow-100 italic">
+                    "사장님, 홈페이지가 모바일에서 깨져서 제가 임시로 고쳐봤습니다. 링크 눌러서 확인해보세요."
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-12 mb-12">
+            <h3 class="text-2xl font-black text-white">졸업을 축하합니다.</h3>
+            <p class="text-gray-500 text-sm mt-2">이제 당신만의 공장을 지으세요.</p>
+        </div>
+    </section>
+
+    <nav class="bottom-nav">
+        <a href="#prologue" class="nav-item active" onclick="setActive(this)">
+            <span>🚀</span>Intro
+        </a>
+        <a href="#week1" class="nav-item" onclick="setActive(this)">
+            <span>🛠</span>W1
+        </a>
+        <a href="#week2" class="nav-item" onclick="setActive(this)">
+            <span>👁</span>W2
+        </a>
+        <a href="#week3" class="nav-item" onclick="setActive(this)">
+            <span>💰</span>W3
+        </a>
+        <a href="#week4" class="nav-item" onclick="setActive(this)">
+            <span>🌏</span>W4
+        </a>
+        <a href="#bonus" class="nav-item" onclick="setActive(this)">
+            <span>💎</span>Bonus
+        </a>
+    </nav>
+
+    <script>
+        // Navigation Logic
+        function setActive(element) {
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        // Chart Configurations
+        document.addEventListener('DOMContentLoaded', () => {
+            Chart.defaults.color = '#888';
+            Chart.defaults.borderColor = '#333';
+
+            // 1. Productivity Chart
+            new Chart(document.getElementById('productivityChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['혼자 코딩', 'AI 지휘'],
+                    datasets: [{
+                        label: '효율',
+                        data: [1, 3],
+                        backgroundColor: ['#333', '#00ffff'],
+                        borderRadius: 5
+                    }]
+                },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+            });
+
+            // 2. Time Comparison
+            new Chart(document.getElementById('timeComparisonChart'), {
+                type: 'bar',
+                indexAxis: 'y',
+                data: {
+                    labels: ['기존 (3일)', '바이브 (10분)'],
+                    datasets: [{
+                        label: '시간',
+                        data: [72, 0.2],
+                        backgroundColor: ['#ff4d4f', '#00ffff'],
+                        borderRadius: 5
+                    }]
+                },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+            });
+
+            // 3. Conversion Chart
+            new Chart(document.getElementById('conversionChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['성공', '실패'],
+                    datasets: [{ data: [90, 10], backgroundColor: ['#ff00ff', '#222'], borderWidth: 0 }]
+                },
+                options: { responsive: true, maintainAspectRatio: false, cutout: '70%', plugins: { legend: { display: false } } }
+            });
+
+            // 4. Wrapper Chart
+            new Chart(document.getElementById('wrapperChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['비용', '수익'],
+                    datasets: [{
+                        label: '금액',
+                        data: [1, 100],
+                        backgroundColor: ['#666', '#d946ef'],
+                        borderRadius: 5
+                    }]
+                },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
+            });
+
+            // 5. Efficiency Chart
+            new Chart(document.getElementById('efficiencyChart'), {
+                type: 'bar',
+                indexAxis: 'y',
+                data: {
+                    labels: ['기존 (2주)', '필살기 (3분)'],
+                    datasets: [{
+                        label: '시간',
+                        data: [80, 0.05],
+                        backgroundColor: ['#333', '#a855f7'],
+                        borderRadius: 5
+                    }]
+                },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { display: false } } }
+            });
+        });
+    </script>
+</body>
+</html>
